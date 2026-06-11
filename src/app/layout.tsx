@@ -10,9 +10,9 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: "Đỗ Quang Hợp",
+  title: "Đỗ Quang Hợp — AI Engineer",
   description:
-    "AI Engineer xây dựng hệ thống trí tuệ nhân tạo ứng dụng trong thực tế doanh nghiệp — workflow automation, LLM, Agentic RAG.",
+    "AI Engineer xây dựng hệ thống thông minh cấp production — tự động hóa quy trình, LLM, Agentic RAG và ứng dụng Multi-Agent.",
 }
 
 export default function RootLayout({

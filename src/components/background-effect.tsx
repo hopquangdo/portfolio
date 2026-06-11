@@ -42,7 +42,16 @@ const SECTION_THEMES: Record<
     grid: "oklch(0.78 0.04 60 / 0.035)",
     spotlight: "oklch(0.7 0.07 70 / 0.035)",
   },
-  connect: {
+  activities: {
+    orbs: [
+      "oklch(0.58 0.08 200 / 0.07)",
+      "oklch(0.6 0.06 175 / 0.05)",
+      "oklch(0.62 0.05 150 / 0.04)",
+    ],
+    grid: "oklch(0.75 0.04 175 / 0.04)",
+    spotlight: "oklch(0.68 0.08 180 / 0.04)",
+  },
+  contact: {
     orbs: [
       "oklch(0.58 0.08 320 / 0.06)",
       "oklch(0.6 0.06 265 / 0.05)",
@@ -62,7 +71,7 @@ export function BackgroundEffect({ activeSection }: BackgroundEffectProps) {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
 
   const theme = SECTION_THEMES[activeSection] ?? SECTION_THEMES.intro
-  const sectionIndex = ["intro", "work", "projects", "education", "connect"].indexOf(activeSection)
+  const sectionIndex = ["intro", "work", "projects", "education", "activities", "contact"].indexOf(activeSection)
   const drift = sectionIndex >= 0 ? sectionIndex * 8 : 0
 
   useEffect(() => {
