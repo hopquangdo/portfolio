@@ -17,7 +17,7 @@ const sections = ["intro", "work", "projects", "education", "connect"]
 
 export default function Home() {
   const [isDark, setIsDark] = useState(true)
-  const [activeSection, setActiveSection] = useState("")
+  const [activeSection, setActiveSection] = useState("intro")
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-foreground relative isolate overflow-x-hidden">
-      <BackgroundEffect />
+      <BackgroundEffect activeSection={activeSection} />
 
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-20 hidden lg:block">
         <div className="flex flex-col gap-4">

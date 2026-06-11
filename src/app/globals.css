@@ -139,136 +139,110 @@
   .bg-orb {
     position: absolute;
     border-radius: 9999px;
-    filter: blur(80px);
+    filter: blur(120px);
+    will-change: transform, background;
+    transition: background 1.6s ease;
+  }
+
+  .bg-orb-wrap {
+    position: absolute;
+    transition: transform 0.5s ease-out;
     will-change: transform;
   }
 
-  .bg-orb-1 {
-    top: -10%;
-    left: -5%;
-    width: 55vw;
-    height: 55vw;
-    max-width: 640px;
-    max-height: 640px;
-    background: oklch(0.55 0.2 280 / 0.35);
-    animation: orb-drift-1 22s ease-in-out infinite;
-  }
-
-  .bg-orb-2 {
-    top: 35%;
-    right: -15%;
+  .bg-orb-wrap-1 {
+    top: -12%;
+    left: -8%;
     width: 50vw;
     height: 50vw;
     max-width: 560px;
     max-height: 560px;
-    background: oklch(0.62 0.16 220 / 0.28);
-    animation: orb-drift-2 26s ease-in-out infinite;
   }
 
-  .bg-orb-3 {
-    bottom: -5%;
-    left: 20%;
-    width: 45vw;
-    height: 45vw;
-    max-width: 520px;
-    max-height: 520px;
-    background: oklch(0.68 0.14 165 / 0.22);
-    animation: orb-drift-3 30s ease-in-out infinite;
+  .bg-orb-wrap-2 {
+    top: 38%;
+    right: -18%;
+    width: 46vw;
+    height: 46vw;
+    max-width: 500px;
+    max-height: 500px;
   }
 
-  .dark .bg-orb-1 {
-    background: oklch(0.52 0.22 280 / 0.45);
+  .bg-orb-wrap-3 {
+    bottom: -8%;
+    left: 18%;
+    width: 42vw;
+    height: 42vw;
+    max-width: 460px;
+    max-height: 460px;
   }
 
-  .dark .bg-orb-2 {
-    background: oklch(0.58 0.18 230 / 0.35);
-  }
-
-  .dark .bg-orb-3 {
-    background: oklch(0.62 0.16 165 / 0.28);
+  .bg-orb-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    filter: blur(120px);
+    animation: orb-breathe 24s ease-in-out infinite;
+    transition: background 1.6s ease;
   }
 
   .bg-spotlight {
     position: absolute;
     top: 0;
     left: 0;
-    width: 400px;
-    height: 400px;
+    width: 440px;
+    height: 440px;
     border-radius: 9999px;
-    background: radial-gradient(circle, oklch(0.75 0.12 250 / 0.12) 0%, transparent 70%);
-    transition: transform 0.15s ease-out;
+    transition: transform 0.2s ease-out, background 1.6s ease;
     pointer-events: none;
-  }
-
-  .dark .bg-spotlight {
-    background: radial-gradient(circle, oklch(0.65 0.18 260 / 0.18) 0%, transparent 70%);
   }
 
   .bg-grid {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(oklch(0.5 0 0 / 0.18) 1px, transparent 1px);
-    background-size: 32px 32px;
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 20%, transparent 75%);
+    background-image: radial-gradient(var(--grid-dot, oklch(0.85 0 0 / 0.04)) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, black 10%, transparent 78%);
+    transition: background-image 1.6s ease;
   }
 
   .dark .bg-grid {
-    background-image: radial-gradient(oklch(0.85 0 0 / 0.12) 1px, transparent 1px);
+    --grid-dot: oklch(0.85 0 0 / 0.035);
   }
 
   .bg-vignette {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 90% 80% at 50% 50%, transparent 40%, oklch(0.145 0 0 / 0.08) 100%);
+    background: radial-gradient(ellipse 92% 85% at 50% 50%, transparent 50%, oklch(0.145 0 0 / 0.05) 100%);
   }
 
   .dark .bg-vignette {
-    background: radial-gradient(ellipse 90% 80% at 50% 50%, transparent 35%, oklch(0.08 0 0 / 0.55) 100%);
+    background: radial-gradient(ellipse 92% 85% at 50% 50%, transparent 45%, oklch(0.08 0 0 / 0.35) 100%);
   }
 
-  @keyframes orb-drift-1 {
+  @keyframes orb-breathe {
     0%,
     100% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(8%, 6%) scale(1.08);
-    }
-    66% {
-      transform: translate(-4%, 10%) scale(0.95);
-    }
-  }
-
-  @keyframes orb-drift-2 {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
+      scale: 1;
+      opacity: 0.85;
     }
     50% {
-      transform: translate(-10%, -8%) scale(1.1);
-    }
-  }
-
-  @keyframes orb-drift-3 {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-    40% {
-      transform: translate(6%, -6%) scale(1.05);
-    }
-    80% {
-      transform: translate(-8%, 4%) scale(0.92);
+      scale: 1.06;
+      opacity: 1;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .bg-orb {
+    .bg-orb-inner {
       animation: none;
     }
 
     .bg-spotlight {
       display: none;
+    }
+
+    .bg-orb-wrap {
+      transition: none;
     }
   }
 }
